@@ -7,3 +7,4 @@ export async function getPokemon(filter) {
   
   return data;
 }
+
