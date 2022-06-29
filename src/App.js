@@ -1,12 +1,20 @@
 
 import './App.css';
+import PokemonSearch from './PokemonSearch';
+
+
+
 
 function App() {
   return (
-    <div className="App">
-
+    <div>
+      <PokemonSearch />
+  
     </div>
+
   );
+ 
+
 }
 
 export default App;

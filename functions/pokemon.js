@@ -10,19 +10,20 @@ const headers = {
 
 exports.handler = async (event, context) => {
   try {
-    const response = await fetch (`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${event.queryStringParamaters.pokeQuery}`);
-    const data = await respponse.json();
+    console.log(event.queryStringParamaters);
+    const response = await fetch (`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${event.queryStringParameters.pokeQuery}`);
+    const data = await response.json();
     const json = JSON.stringify(data);
     
     return {
-      statusCode: 200;
+      statusCode: 200,
       headers, 
       body: json };
-    }
-    catch error {
-      return {
-        statusCode: 500;
-        body: JSON.stringify({ error }),
-      }
-    }
   }
+  catch (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error }),
+    };
+  }
+};
