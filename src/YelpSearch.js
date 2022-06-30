@@ -18,7 +18,7 @@ export default function YelpSearch() {
   
   useEffect(() => {
     grabAndStoreYelp();
-    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
   
