@@ -9,9 +9,10 @@ const headers = {
 };
 
 exports.handler = async (event, context) => {
+  
   try {
   
-    const response = await fetch (`https://api.yelp.com/v3/businesses/search?yelp=${event.queryStringParameters.pokeQuery}`, {
+    const response = await fetch (`https://api.yelp.com/v3/businesses/search?location=${event.queryStringParameters.yelpQuery}&attributes=hot_and_new`, {
 
       headers: {
         Authorization: `Bearer ${process.env.YELP_KEY}`,

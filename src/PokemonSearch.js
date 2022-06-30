@@ -40,7 +40,7 @@ export default function PokemonSearch() {
       {
         pokemon.map((poke, i) => <div key={poke.pokemon + i} className='pokemon'>
           <h3>{poke.pokemon}</h3>
-          <img src={poke.url_image}/>
+          <img src={poke.url_image} />
         </div>)
       };
     </>
