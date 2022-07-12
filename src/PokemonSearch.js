@@ -6,13 +6,15 @@ import { getPokemon } from './services/fetch-utils';
 export default function PokemonSearch() {
   
   const [pokemon, setPokemon] = useState([]);
-  const [pokemonQuery, setPokemonQuery] = useState('');
-  
+  const [pokemonInput, setPokemonInput] = useState('');
+  const [pokemonQuery, setPokemonQuery] = useState(pokemonInput);
+
   async function grabAndStorePoke() {
-      
+    
     
     const data = await getPokemon(pokemonQuery);
-    setPokemon(data.results);
+    console.log(data);
+    setPokemon(data);
   }
   
   useEffect(() => {
@@ -22,8 +24,10 @@ export default function PokemonSearch() {
   
   
   async function handleSubmit(e) {
+
     e.preventDefault();
-      
+    setPokemonQuery(pokemonInput);
+    
     const data = await getPokemon(pokemonQuery);
     setPokemon(data.results);
     setPokemonQuery('');
@@ -34,7 +38,7 @@ export default function PokemonSearch() {
   return (
     <><div className="Pokemon" />
       <form onSubmit={handleSubmit}>
-        <input onChange={e => setPokemonQuery(e.target.value)} />
+        <input onChange={e => setPokemonInput(e.target.value)} />
         <button>Search Pokemon</button>
       </form>
       {
