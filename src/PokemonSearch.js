@@ -13,7 +13,7 @@ export default function PokemonSearch() {
     
     
     const data = await getPokemon(pokemonQuery);
-    console.log(data);
+    
     setPokemon(data);
   }
   
