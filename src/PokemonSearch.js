@@ -7,8 +7,8 @@ export default function PokemonSearch() {
   
   const [pokemon, setPokemon] = useState([]);
   const [pokemonInput, setPokemonInput] = useState('');
-  const [pokemonQuery, setPokemonQuery] = useState(pokemonInput);
-
+  const [pokemonQuery, setPokemonQuery] = useState('');
+  
   async function grabAndStorePoke() {
     
     
@@ -26,11 +26,13 @@ export default function PokemonSearch() {
   async function handleSubmit(e) {
 
     e.preventDefault();
+    
     setPokemonQuery(pokemonInput);
     
-    const data = await getPokemon(pokemonQuery);
-    setPokemon(data.results);
-    setPokemonQuery('');
+    const data = await getPokemon(pokemonInput);
+  
+    setPokemon(data);
+    setPokemonInput('');
   
   }
   
@@ -41,7 +43,7 @@ export default function PokemonSearch() {
         <input onChange={e => setPokemonInput(e.target.value)} />
         <button>Search Pokemon</button>
       </form>
-      {
+      { pokemon &&
         pokemon.map((poke, i) => <div key={poke.pokemon + i} className='pokemon'>
           <h3>{poke.pokemon}</h3>
           <img src={poke.url_image} />
